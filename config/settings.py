@@ -5,7 +5,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 from decouple import config
 SECRET_KEY = config('SECRET_KEY')
 
-# DEBUG = True
 DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'we-blog-django.herokuapp.com']
@@ -84,7 +83,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / "static"
-STATICFILES_DIRS = []
+# STATICFILES_DIRS = []
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
