@@ -7,7 +7,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'we-blog-django.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'we-blog-django.herokuapp.com', 'dj-base.herokuapp.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
