@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% for post in posts %}
+<div class="card">
+  <h2>{{ post.title }}</h2>
+  <p><!-- {{ post.author }} |  -->{{ post.created_at}} </p>
+  <p>{{post.body|slice:":200" }}</p>
+  <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>
+</div>
+{% endfor %}
+
+<style>
+  .card {    
+    max-width: 400px;
+    margin: 3em auto;
+    padding: 1em;
+
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    border-radius: 0.5em;
+  }
+</style>
+{%endblock%}

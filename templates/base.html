@@ -1,0 +1,105 @@
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width,initial-scale=1'>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div style="display: flex;">
+          <a href="{% url 'home' %}">Home</a>
+          {% if user.is_authenticated %}
+          <form method="POST" action="/accounts/logout/">{% csrf_token %} <button>Logout</button></form>
+          {% else %}
+          <a href="/accounts/signup/">Signup</a>
+          <a href="/accounts/login/">login</a>
+          {% endif %}
+      </div>
+    </nav>
+    {% block content %}
+    {% endblock content %}
+  </body>
+
+<style>
+html, body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  color: #333;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+a {
+  color: rgb(0,100,200);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:visited {
+  color: rgb(0,80,160);
+}
+
+label {
+  display: block;
+}
+
+input, button, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-padding: 0.4em 0;
+  padding: 0.4em;
+  margin: 0 0 0.5em 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+input:disabled {
+  color: #ccc;
+}
+
+button {
+  color: #333;
+  background-color: #f4f4f4;
+  outline: none;
+}
+
+button:disabled {
+  color: #999;
+}
+
+button:not(:disabled):active {
+  background-color: #ddd;
+}
+
+button:focus {
+  border-color: #666;
+}
+.navbar {
+  background: #EEE;
+  color: #aaa;
+  padding: 1em;
+}
+.navbar a {
+  color: #aaa;
+  margin-left: 1em;
+}
+.navbar button {
+  background: #EEE;
+  color: #aaa;
+  padding: 0;
+  margin: 0;
+  margin-left: 1em;
+  border: none;
+  cursor: pointer;
+}
+</style>
+</html>
