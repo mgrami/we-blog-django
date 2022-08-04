@@ -5,11 +5,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 from decouple import config
 SECRET_KEY = config('SECRET_KEY')
 
-import sys
-if( len(sys.argv) >= 2 and sys.argv[1] == 'runserver' ): DEBUG = True
-else: DEBUG = False
+DEBUG = True
+# import sys
+# if( len(sys.argv) >= 2 and sys.argv[1] == 'runserver' ): DEBUG = True
+# else: DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'we-blog-django.herokuapp.com', 'dj-base.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'we-blog-django.herokuapp.com',]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -18,6 +19,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # 'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -91,3 +98,26 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+# SOCIALACCOUNT_PROVIDERS = {
+#     'google': {
+#         'APP': {
+#             'client_id': '123',
+#             'secret': '456',
+#             'key': ''
+#         }
+#     }
+# }

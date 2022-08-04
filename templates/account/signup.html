@@ -1,0 +1,120 @@
+<html>
+<head>
+    <title>Signup</title>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width,initial-scale=1'>
+</head>
+<body>
+<form class="form-signup" id="signup_form" method="post" action="/accounts/signup/">
+  {% csrf_token %}
+  <h2>Sign Up</h2>
+  <p>
+    <!-- <label for="id_username">Username:</label> -->
+    <input type="text" name="username" placeholder="Username" autocomplete="username" minlength="1" maxlength="150" required="" id="id_username">
+  </p>
+  <p>
+    <!-- <label for="id_email">E-mail (optional):</label> -->
+    <input type="email" name="email" placeholder="E-mail" autocomplete="email" id="id_email">
+  </p>
+  <p>
+    <!-- <label for="id_password1">Password:</label> -->
+    <input type="password" name="password1" placeholder="Password" autocomplete="new-password" required="" id="id_password1">
+  </p>
+  <p>
+    <!-- <label for="id_password2">Password (again):</label> -->
+    <input type="password" name="password2" placeholder="Password (again)" autocomplete="new-password" required="" id="id_password2">
+  </p>
+  
+  <button type="submit">Sign Up</button>
+  <p><a href="/accounts/login/">Login</a></p>
+</form>
+</body>
+<style>
+html, body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  color: #333;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+a {
+  color: rgb(0,100,200);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:visited {
+  color: rgb(0,80,160);
+}
+
+label {
+  display: block;
+}
+
+input, button, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-padding: 0.4em 0;
+  padding: 0.4em;
+  margin: 0 0 0.5em 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+input:disabled {
+  color: #ccc;
+}
+
+button {
+  color: #333;
+  background-color: #f4f4f4;
+  outline: none;
+}
+
+button:disabled {
+  color: #999;
+}
+
+button:not(:disabled):active {
+  background-color: #ddd;
+}
+
+button:focus {
+  border-color: #666;
+}
+
+.form-signup {
+  max-width: 400px;
+  margin: 3em auto;
+  padding: 1em;
+  text-align: center;
+
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 0.5em;
+}
+input {
+  width: 90%;
+  margin: 0 auto;
+}
+button {  
+  width: 90%;
+  background: #3861FB;
+  color: #FFF;
+  border-color: #3861FB;
+}
+.message {
+  color: #E00
+}
+</style>
+</html>
