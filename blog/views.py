@@ -22,7 +22,7 @@ class PostDetailView(generic.DetailView):
 @method_decorator(login_required, name='dispatch')
 class PostCreateView(generic.CreateView):
     model = Post
-    fields = ['title', 'slug', 'body',]
+    fields = ['title', 'slug', 'body', 'author',]
     template_name = 'blog/post_create.html'
     success_url = reverse_lazy('blog:post_list')
 
