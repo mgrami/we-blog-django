@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-
+from django.contrib.auth.models import User
 
 # class Profile(models.Model):
 #   user = models.OneToOneField(
@@ -36,8 +36,8 @@ class Post(models.Model):
   updated_at = models.DateTimeField(auto_now=True)
 
   # status = models.IntegerField(choices=STATUS, default=0)
-  # author = models.ForeignKey(Profile, on_delete=models.PROTECT)
-  # tags = models.ManyToManyField(Tag, blank=True)
+  author = models.ForeignKey(User, on_delete=models.PROTECT)
+  # tags = models.ManyToManyField(Tag, blank=True, null=True)
 
   class Meta:
     ordering = ["-created_at"]

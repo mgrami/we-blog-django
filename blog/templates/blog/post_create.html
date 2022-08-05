@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="post" class="form-post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+</form>
+<style>
+    .form-post {
+      max-width: 400px;
+      margin: 3em auto;
+      padding: 1em;
+      text-align: center;
+
+      box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+      border-radius: 0.5em;
+    }
+    input {
+      width: 90%;
+      margin: 0 auto;
+    }
+    input[type=submit] {  
+      width: 90%;
+      background: #3861FB;
+      color: #FFF;
+      border-color: #3861FB;
+    }
+    .errorlist {
+      color: #E00
+    }
+</style>
+{%endblock%}

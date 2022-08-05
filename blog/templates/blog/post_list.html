@@ -5,9 +5,9 @@
   {% for post in posts %}
   <div class="card">
     <h2>{{ post.title }}</h2>
-    <p><!-- {{ post.author }} |  -->{{ post.created_at}} </p>
+    <p>{{ post.author }} | {{ post.created_at}} </p>
     <p>{{post.body|slice:":200" }}</p>
-    <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>
+    <a href="{% url 'blog:post_detail' post.slug  %}">Read More &rarr;</a>
   </div>
   {% endfor %}
 </div>

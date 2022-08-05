@@ -5,7 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 from decouple import config
 SECRET_KEY = config('SECRET_KEY')
 
-DEBUG = False
+DEBUG = True
 # import sys
 # if( len(sys.argv) >= 2 and sys.argv[1] == 'runserver' ): DEBUG = True
 # else: DEBUG = False
@@ -104,6 +104,7 @@ SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/accounts/login/'
+ACCOUNT_EMAIL_REQUIRED = True
 
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
