@@ -5,7 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 from decouple import config
 SECRET_KEY = config('SECRET_KEY')
 
-DEBUG = True
+DEBUG = False
 # import sys
 # if( len(sys.argv) >= 2 and sys.argv[1] == 'runserver' ): DEBUG = True
 # else: DEBUG = False
