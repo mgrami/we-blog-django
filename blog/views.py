@@ -18,12 +18,16 @@ class PostDetailView(generic.DetailView):
     template_name = 'blog/post_detail.html'
     context_object_name = 'post'
 
-
+from django.http import HttpResponseRedirect
 @method_decorator(login_required, name='dispatch')
 class PostCreateView(generic.CreateView):
     model = Post
-    fields = ['title', 'slug', 'body', 'author',]
+    fields = ['title', 'slug', 'body',]
     template_name = 'blog/post_create.html'
     success_url = reverse_lazy('blog:post_list')
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 
