@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around; padding-top: 3em;">
   {% for post in posts %}
   <div class="card">
     <h2>{{ post.title }}</h2>
@@ -14,14 +14,12 @@
 
 <style>
   .card {
-    width: 400px;
-    max-width: 95%;
-    /*margin: 0 auto;*/
+    max-width: 400px;
     margin: 0.5em;
     padding: 1em;
-
+    background: #FFF;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-    border-radius: 0.5em;
+    border-radius: 0.2em;
   }
 </style>
 {%endblock%}

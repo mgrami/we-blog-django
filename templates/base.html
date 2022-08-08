@@ -3,8 +3,6 @@
   <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width,initial-scale=1'>
-  </head>
-  <body>
 <style>
   html, body {
     position: relative;
@@ -70,10 +68,10 @@
     border-color: #666;
   }
   .navbar {
-    background: #EEE;
+    background: #FFF;
     color: #aaa;
     padding: 1em;
-    margin-bottom: 3em;
+    margin-bottom: 0;
   }
   .navbar a {
     color: #aaa;
@@ -88,20 +86,101 @@
     border: none;
     cursor: pointer;
   }
+  #side_nav {
+    font-size: 0.9em;
+    height: 100vh;
+    width: 10em;
+    max-width: 15%;
+    padding: 1em;
+  }
+  #side_nav a {
+    color: #aaa;
+  }
+  #side_nav button {
+    color: #aaa;
+    padding: 0;
+    margin: 0;
+    margin-left: 1em;
+    border: none;
+    cursor: pointer;
+  }
+  .side_nav_item {
+    padding: 0.5em;
+  }
+  .side_nav_item:hover {
+    font-size: 1.1em;
+  }
+  .side_nav_item a {
+    text-decoration: none;
+  }
+  #search-form {
+    /*background: #EEE;*/
+    height: 2em;
+    width: 20em;
+    margin: 0 auto;
+  }
+  #search-form input {
+    margin-right: 0;
+    padding: 0.2em;
+    height: 2em;
+    width: 17em;
+  }
+  #search-form button {
+    background: #EEE;
+    margin-left: 0;
+    padding: 0.2em;
+    height: 2em;
+    width: 2em;
+  }
 </style>
+  </head>
+  <body>
     <nav class="navbar">
       <div style="display: flex;">
-          <a href="/">Home</a>
-          {% if user.is_authenticated %}
-          <a href="{% url 'blog:post_create'  %}">New Post</a>
-          <form method="POST" action="/accounts/logout/">{% csrf_token %} <button>Logout</button></form>
-          {% else %}
-          <a href="/accounts/signup/">Signup</a>
-          <a href="/accounts/login/">login</a>
-          {% endif %}
+        <div>
+          <span style="cursor: pointer;" id="hamburger">&#9776;</span>
+          <a href="/" style="text-decoration: none;">Home</a>
+        </div>
+        <div style="width: 80%;">
+          <div style="background: #EEE; height: 2em; width: 20em; margin: 0 auto;">
+          <form id="search-form">
+              <input type="text" name="search">
+              <button type="submit">Go</button>
+            </form>
+          </div>
+        </div>
       </div>
     </nav>
-    {% block content %}
-    {% endblock content %}
+    <div style="display: flex;">
+      <div id="side_nav">
+        <div class="side_nav_item"><a href="/">Home</a></div>
+        {% if user.is_authenticated %}
+        <div class="side_nav_item"><a href="{% url 'blog:post_create' %}">New Post</a></div>
+        <div class="side_nav_item">
+          <form method="POST" action="/accounts/logout/">
+            {% csrf_token %}
+            <button style="background: #FFF; margin-left: 0;">Logout</button>
+          </form>
+        </div>
+        {% else %}
+        <a href="/accounts/signup/">Signup</a>
+        <a href="/accounts/login/">login</a>
+        {% endif %}
+      </div>
+      <div style="width: 100%; background: #F8F8F8; padding: 1em; padding-right: 1.5em;">
+      {% block content %}
+      {% endblock content %}
+      </div>
+    </div>
+    <script>
+      const side_nav = document.getElementById('side_nav')
+      const hamburger = document.getElementById('hamburger')
+      let show_side_nav = true
+      hamburger.addEventListener('click', () => {
+        show_side_nav = !show_side_nav
+        if(show_side_nav) side_nav.style.display = 'block'
+        else side_nav.style.display = 'none'
+      })
+    </script>
   </body>
 </html>
