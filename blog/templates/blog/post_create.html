@@ -1,13 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% load static %}
+<script src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+<script src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+
 <form method="post" class="form-post">{% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Save">
 </form>
 <style>
     .form-post {
-      max-width: 400px;
+      /*max-width: 400px;*/
+      width: 90%;
       margin: 3em auto;
       padding: 1em;
       text-align: center;
@@ -16,8 +21,11 @@
       border-radius: 0.5em;
     }
     input {
-      width: 90%;
+      width: 100%;
+      max-width: 936px;
       margin: 0 auto;
+      border: 2px solid #EEE;
+      border-radius: 0.3em;
     }
     input[type=submit] {  
       width: 90%;
@@ -27,6 +35,11 @@
     }
     .errorlist {
       color: #E00
+    }
+    p label {
+      margin-bottom: 0.5em;
+      padding-left: 1em;
+      text-align: left;
     }
 </style>
 {%endblock%}

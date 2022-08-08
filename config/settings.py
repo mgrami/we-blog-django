@@ -6,9 +6,6 @@ from decouple import config
 SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = False
-# import sys
-# if( len(sys.argv) >= 2 and sys.argv[1] == 'runserver' ): DEBUG = True
-# else: DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'we-blog-django.herokuapp.com',]
 
@@ -24,7 +21,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    # 'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.google',
+    'ckeditor',
     'blog',
 ]
 
@@ -107,10 +105,7 @@ LOGOUT_REDIRECT_URL = '/accounts/login/'
 ACCOUNT_EMAIL_REQUIRED = True
 
 AUTHENTICATION_BACKENDS = [
-    # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
-
-    # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
@@ -123,3 +118,11 @@ AUTHENTICATION_BACKENDS = [
 #         }
 #     }
 # }
+
+CKEDITOR_CONFIGS = {
+'default': {
+    'toolbar': None, #You can change this based on your requirements.
+    'width': 'auto',
+
+          },
+    }

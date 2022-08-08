@@ -5,10 +5,9 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
+    # path('', lambda req: __import__('django.http', fromlist=['http']).JsonResponse({"user": req.user.email})),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    # path('', lambda req: __import__('django.http', fromlist=['http']).JsonResponse({"user": req.user.email})),
-    # path('blog/', include('blog.urls')),
     path('', include('blog.urls')),
 ]
 
