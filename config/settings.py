@@ -6,7 +6,7 @@ from decouple import config
 SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = False
-DEBUG = config('DEBUG')
+# DEBUG = config('DEBUG')
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'we-blog-django.herokuapp.com',]
 
