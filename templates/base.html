@@ -143,8 +143,8 @@
         </div>
         <div style="width: 80%;">
           <div style="background: #EEE; height: 2em; width: 20em; margin: 0 auto;">
-          <form id="search-form">
-              <input type="text" name="search">
+          <form id="search-form" method="GET" action="">
+              <input type="text" name="q">
               <button type="submit">Go</button>
             </form>
           </div>
@@ -163,8 +163,8 @@
           </form>
         </div>
         {% else %}
-        <a href="/accounts/signup/">Signup</a>
-        <a href="/accounts/login/">login</a>
+        <div class="side_nav_item"><a href="/accounts/signup/">Signup</a></div>
+        <div class="side_nav_item"><a href="/accounts/login/">login</a></div>
         {% endif %}
       </div>
       <div style="width: 100%; background: #F8F8F8; padding: 1em; padding-right: 1.5em;">
