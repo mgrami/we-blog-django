@@ -2,10 +2,37 @@
 
 {% block content %}
 <div class="card">
-  <h1>{{ post.title }}</h1>
+  <div style="display: flex; justify-content: space-between;">
+    <h1>{{ post.title }}</h1>
+
+    <form method="post" action="like_post/" id="like-post-form">
+      {% csrf_token %}
+      <input type="hidden" name="post_id" value="{{ post.id }}">
+      <button id="like-post-button" style="background: #FFF; cursor: pointer; border: none;">
+        <span class="heart" 
+        style="font-size: 1.3em; color: {% if total_likes == 0 %} #888 {% else %} red {% endif %};"
+        >&#10084;</span>
+        {{ total_likes }}
+      </button>
+    </form>
+  </div>
+
+
   <p class=" text-muted">{{ post.author }} | {{ post.created_at }}</p>
   <p class="card-text ">{{ post.body | safe }}</p>
+  
+  <form method="post" action="like_post/" id="like-post-form">
+    {% csrf_token %}
+    <input type="hidden" name="post_id" value="{{ post.id }}">
+    <button id="like-post-button" style="background: #FFF; cursor: pointer; border: none;">
+      <span class="heart" 
+      style="font-size: 1.3em; color: {% if total_likes == 0 %} #888 {% else %} red {% endif %};"
+      >&#10084;</span>
+      {{ total_likes }}
+    </button>
+  </form>
 </div>
+
 
 <style>
   .card {

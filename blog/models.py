@@ -1,8 +1,5 @@
 from django.db import models
-from django.conf import settings
 from django.contrib.auth.models import User
-from django.contrib.contenttypes.fields import GenericForeignKey
-from django.contrib.contenttypes.models import ContentType
 from ckeditor.fields import RichTextField
 
 
@@ -19,7 +16,7 @@ class Post(models.Model):
   updated_at = models.DateTimeField(auto_now=True)
 
   # status = models.IntegerField(choices=STATUS, default=0)
-  author = models.ForeignKey(User, on_delete=models.PROTECT)
+  author = models.ForeignKey(User, on_delete=models.CASCADE)
   # tags = models.ManyToManyField(Tag, blank=True, null=True)
 
   class Meta:
@@ -29,17 +26,17 @@ class Post(models.Model):
     return self.title
 
 
-class LikeModel(models.Model):
-  user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.SET_NULL, null=True)
-  liked = models.BooleanField()
-  content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-  object_id = models.PositiveIntegerField()
-  content_object = GenericForeignKey('content_type', 'object_id')
+class LikePost(models.Model):
+  post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='likes')
+  user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='likes')
+  liked = models.BooleanField(default=True)
+  created_at = models.DateTimeField(auto_now_add=True)
 
-  timestamp = models.DateTimeField(auto_now_add=True)
+  class Meta:
+    constraints = [
+      models.UniqueConstraint(fields=['user', 'post'], name="unique_like"),
+    ]
 
-  def __unicode__(self):
-    return str(self.user.username)
 
 
 
